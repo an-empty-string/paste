@@ -16,7 +16,7 @@ def index():
     if request.method == "GET":
         pastes = models.Paste.select() \
                              .where(models.Paste.author == session["username"]) \
-                             .order_by(models.Paste.created)
+                             .order_by(models.Paste.created.desc())
 
         return render_template("new_paste.html", pastes=pastes)
 

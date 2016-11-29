@@ -23,7 +23,7 @@ class SSOAuthenticator:
     def verify(self, token, url):
         resp = requests.get("{}/verify/{}/".format(self.url, token)).json()
         if not resp["valid"]: return False
-        if urllib.parse.urlparse(url).netloc != urllib.parse.urlparse(resp["token"]["service"]).netloc: return False
+        if urllib.parse.urlparse(url).netloc != resp["token"]["host"]: return False
         return resp["token"]
 
 def require_login(f):
