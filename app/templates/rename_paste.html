@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Rename paste</h2>
+<form method="POST">
+    <input type="hidden" name="csrf" value="{{ session.csrf }}" />
+    <div class="field">
+        <label for="title">Paste title</label>
+        <input type="text" id="title" name="title" value="{{ paste.title }}" autofocus />
+    </div>
+    <button type="submit">Rename paste</button>
+</form>
+{% endblock %}

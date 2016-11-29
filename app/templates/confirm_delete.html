@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Confirm delete</h2>
+<p>Are you sure you want to delete the paste "{{ paste.title }}", created at {{ paste.created.strftime("%Y-%m-%d %H:%M") }}?</p>
+<form method="POST">
+    <input type="hidden" name="csrf" value="{{ session.csrf }}" />
+    <button class="linkbutton" type="submit">Yes, delete the paste</button> &middot;
+    <a href="{{ url_for("index") }}">No, that's not what I wanted</a>
+</form>
+{% endblock %}

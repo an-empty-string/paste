@@ -1,0 +1,82 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.7;
+
+    background-color: #eee;
+    color: #222;
+}
+
+.container {
+    max-width: 60em;
+    width: 90%;
+    margin: auto;
+}
+
+.content {
+    margin-top: 10px;
+}
+
+.messages {
+    background-color: #ddd;
+}
+
+a, a:visited {
+    color: #33c;
+}
+
+.field {
+    margin-bottom: 7px;
+}
+
+.field input {
+    width: 100%;
+}
+
+button {
+    color: #222;
+    background-color: #ccc;
+    font-size: 20px;
+    padding: 5px 7px;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+}
+
+button:active {
+    border: 2px inset #bbb;
+}
+
+button.linkbutton {
+    color: #33c;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+button.linkbutton:active {
+    border: none;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+pre {
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+span.hidden:not(:hover) {
+    background-color: black;
+    color: black;
+}

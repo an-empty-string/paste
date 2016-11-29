@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ paste.title }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+
+{% block content %}
+<h2>{{ paste.title }}</h2>
+<p>Created at {{ paste.created.strftime("%Y-%m-%d %H:%M") }} by {{ paste.author }}. <a href="{{ url_for("raw_paste", slug=paste.slug) }}">Show raw</a>
+{% if session.username == paste.author %}&middot; <a href="{{ url_for("delete_paste", slug=paste.slug) }}">Delete paste</a> &middot; <a href="{{ url_for("rename_paste", slug=paste.slug) }}">Rename paste</a>{% endif %}
+{% if session.username %}&middot; <a href="{{ url_for("index") }}">Home</a>{% endif %}</p>
+
+<pre><code>{{ paste.text }}</code></pre>
+{% endblock %}
