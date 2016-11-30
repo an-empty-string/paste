@@ -20,8 +20,11 @@ def index():
 
         return render_template("new_paste.html", pastes=pastes)
 
-    title = request.form.get("title", "Untitled paste")
+    title = request.form.get("title", "")
     text = request.form.get("text", "")
+
+    if not title:
+        title = "Untitled paste"
 
     paste = models.Paste.create(title=title, text=text, author=session["username"])
     return redirect(url_for("show_paste", slug=paste.slug))
