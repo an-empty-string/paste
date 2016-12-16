@@ -11,21 +11,6 @@ from flask import redirect, request, session, url_for
 def random_string(n=32):
     return "".join([random.choice(string.ascii_letters + string.digits) for i in range(n)])
 
-## Login
-
-class SSOAuthenticator:
-    def __init__(self, url):
-        self.url = url.strip("/")
-
-    def request_url(self, callback):
-        return "{}/request?{}".format(self.url, urllib.parse.urlencode(dict(callback=callback)))
-
-    def verify(self, token, url):
-        resp = requests.get("{}/verify/{}/".format(self.url, token)).json()
-        if not resp["valid"]: return False
-        if urllib.parse.urlparse(url).netloc != resp["token"]["host"]: return False
-        return resp["token"]
-
 def require_login(f):
     @functools.wraps(f)
     def wrapped(*args, **kwargs):

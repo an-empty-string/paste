@@ -11,6 +11,13 @@ class BaseModel(Model):
     class Meta:
         database = database
 
+class UserSession(BaseModel):
+    token = CharField(64)
+    user = CharField(128)
+    valid = BooleanField(default=True)
+
+UserSession.create_table(fail_silently=True)
+
 class Paste(BaseModel):
     title = CharField(128, default="Untitled paste")
     text = TextField()
