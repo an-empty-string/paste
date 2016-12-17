@@ -1,7 +1,7 @@
 from . import utils, models, authlib
 from flask import Blueprint, abort, flash, jsonify, redirect, request, session, url_for
 
-authenticator = authlib.SSOAuthenticator("http://localhost:5050")
+authenticator = authlib.SSOAuthenticator("https://auth.fwilson.me")
 blueprint = Blueprint("skel", __name__, url_prefix="/_")
 
 @blueprint.before_app_request
