@@ -32,22 +32,12 @@ def verify():
     result = authenticator.token(request.args.get("token", ""), request.url)
     if result:
         session["username"] = result["user"]["name"]
+        session["token"] = result["id"]
         models.UserSession.create(token=result["id"], user=result["user"]["name"])
 
         flash("Login successful.")
         return redirect(request.args.get("_next", "/"))
     return "There was a problem with your authentication token; please try that again.", 401
-
-@blueprint.route("/logout/")
-def logout():
-    if "username" in session:
-        session.pop("username")
-    if "token" in session:
-        models.UserSession.update(valid=False) \
-                          .where(models.UserSession.token == session["token"]) \
-                          .execute()
-
-    return redirect(request.args.get("/"))
 
 @blueprint.route("/idplogout/")
 def idplogout():
