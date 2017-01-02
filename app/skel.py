@@ -39,6 +39,12 @@ def verify():
         return redirect(request.args.get("_next", "/"))
     return "There was a problem with your authentication token; please try that again.", 401
 
+@blueprint.route("/logout/")
+def logout():
+    session.clear()
+    flash("Logged out.")
+    return redirect("/")
+
 @blueprint.route("/idplogout/")
 def idplogout():
     n = models.UserSession.update(valid=False) \
